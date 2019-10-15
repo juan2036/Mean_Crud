@@ -44,13 +44,17 @@ export class ProyectoComponent implements OnInit {
     });
   }
 
+  // Elimina proyecto
   deleteProyecto(_id: string){
+    if(confirm('¿Esta seguro de eliminar el dato?')){
     this.proyectoService.deleteProyecto(_id).subscribe(res => {
       this.getProyecto();
+      M.toast({html: 'Dato eliminado satisfactoriamente'})
     })
-
+  }
   }
 
+  // Edita proyecto
   editProyecto(proyecto: Proyecto){
     this.proyectoService.selectedProyecto = proyecto;
 
